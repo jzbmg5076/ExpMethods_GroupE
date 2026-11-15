@@ -1,0 +1,8 @@
+EXPT2 (info updated)…
+Some details for EXPT2 have been updated.
+
+The Arduino script has been updated to maintain (almost exactly) the 5 second loop timing.
+
+The script has also been adjusted to capture 30 minutes of data.
+
+And the list of equipment and objectives have been clarified.

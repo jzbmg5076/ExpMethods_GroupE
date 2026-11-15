@@ -1,0 +1,59 @@
+P2 L plate - T3 full grid (T4 uses nodes 1 2 5 10 11 18 19 20)
+Label,X_in,Y_in,Z_in,Def,Disp,What
+1,0.9,4.336,0.0,0,0,hit point (hammer -Z)
+2,4.4,4.336,0.0,0,0,hit point (hammer -Z)
+3,7.9,4.336,0.0,0,0,hit point (hammer -Z)
+4,11.4,4.336,0.0,0,0,hit point (hammer -Z)
+5,14.9,4.336,0.0,0,0,hit point (hammer -Z)
+6,0.9,2.636,0.0,0,0,hit point (hammer -Z)
+7,4.4,2.636,0.0,0,0,hit point (hammer -Z)
+8,7.9,2.636,0.0,0,0,hit point (hammer -Z)
+9,11.4,2.636,0.0,0,0,hit point (hammer -Z)
+10,14.9,2.636,0.0,0,0,hit point (hammer -Z)
+11,0.9,0.886,0.0,0,0,hit point (hammer -Z)
+12,4.4,0.886,0.0,0,0,hit point (hammer -Z)
+13,7.9,0.886,0.0,0,0,hit point (hammer -Z)
+14,11.4,0.886,0.0,0,0,hit point (hammer -Z)
+15,14.9,0.886,0.0,0,0,hit point (hammer -Z)
+16,12.0,-1.664,0.0,0,0,hit point (hammer -Z)
+17,13.45,-1.664,0.0,0,0,hit point (hammer -Z)
+18,14.9,-1.664,0.0,0,0,hit point (hammer -Z)
+19,6.75,4.486,0.0,0,0,accelerometer (+Z)
+20,11.25,3.486,1.0,0,0,"microphone, 1 in above plate"
+Traceline,Points (type into X-Modal field)
+1,1 2 3 4 5
+2,6 7 8 9 10
+3,11 12 13 14 15
+4,16 17 18
+5,1 6 11
+6,2 7 12
+7,3 8 13
+8,4 9 14 16
+9,5 10 15 18
+
+P2 L plate - T4 mic partial file
+Label,X_in,Y_in,Z_in,Def,Disp,What
+1,0.9,4.336,0.0,0,0,hit point (hammer -Z)
+2,4.4,4.336,0.0,0,0,hit point (hammer -Z)
+5,14.9,4.336,0.0,0,0,hit point (hammer -Z)
+10,14.9,2.636,0.0,0,0,hit point (hammer -Z)
+11,0.9,0.886,0.0,0,0,hit point (hammer -Z)
+18,14.9,-1.664,0.0,0,0,hit point (hammer -Z)
+19,6.75,4.486,0.0,0,0,accelerometer (+Z)
+20,11.25,3.486,1.0,0,0,"microphone, 1 in above plate"
+Traceline,Points (type into X-Modal field)
+1,1 2 5 10 18 11 1
+
+P3 frame - T5 and T6
+Label,X_in,Y_in,Z_in,Def,Disp,What
+1,0.9,0.9,0.0,0,0,hit point (hammer -Z)
+2,13.0,0.9,0.0,0,0,hit point (hammer -Z)
+3,22.95,0.9,0.0,0,0,hit point (hammer -Z)
+4,22.95,11.1,0.0,0,0,hit point (hammer -Z)
+5,13.0,11.1,0.0,0,0,hit point (hammer -Z)
+6,0.9,11.1,0.0,0,0,hit point (hammer -Z)
+7,23.1,2.1,0.0,0,0,accelerometer (+Z)
+8,8.5,2.25,1.0,0,0,"microphone, 1 in above plate"
+Traceline,Points (type into X-Modal field)
+1,1 2 3 4 5 6 1
+

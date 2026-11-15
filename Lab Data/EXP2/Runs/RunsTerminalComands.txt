@@ -1,0 +1,30 @@
+Terminal commands for test runs using the import_arduino_dump in  lab.  Code  located in:
+C:\path\to\ExpMethods_GroupE\Lab Data\EXP2\InLabTool\EXP2_SteadyStateTool
+
+
+
+Commands:
+
+Copper
+T = import_arduino_dump('C:\path\to\ExpMethods_GroupE\Lab Data\EXP2\Runs\R1\Copper.txt', 'Positions', [4.25 6.75 9.25 11.75]);
+
+Aluminum 
+T = import_arduino_dump('C:\path\to\ExpMethods_GroupE\Lab Data\EXP2\Runs\R2\Aluminum.txt', 'Positions', [4.2 6.8 9.4 12]);
+
+Brass
+T = import_arduino_dump('C:\path\to\ExpMethods_GroupE\Lab Data\EXP2\Runs\R3\Bronze.txt', 'Positions', [4.2 6.8 9.4 12]);
+
+Steel
+T = import_arduino_dump('C:\path\to\ExpMethods_GroupE\Lab Data\EXP2\Runs\R4\Steel_Dformat.txt', 'Positions', [3 4.5 6 7.5]);
+
+Copper_Tube
+T = import_arduino_dump('C:\path\to\ExpMethods_GroupE\Lab Data\EXP2\Runs\R5\Tube2_Dformat.txt', 'Positions', [3.5 5.5 7.5 9.5]);
+
+Brass
+T = import_arduino_dump('C:\path\to\ExpMethods_GroupE\Lab Data\EXP2\Runs\R6\Bronze2_Dformat.txt', 'Positions', [2.5 3.5 4.5 5.5]);
+
+Aluminum2
+T = import_arduino_dump('C:\path\to\ExpMethods_GroupE\Lab Data\EXP2\Runs\R7\Aluminum2_Dformat.txt', 'Positions', [2.5 3.5 4.5 5.5]);
+
+
+

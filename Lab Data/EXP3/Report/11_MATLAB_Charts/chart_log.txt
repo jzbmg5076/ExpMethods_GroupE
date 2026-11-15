@@ -1,0 +1,10 @@
+EXP3 chart run 26-Oct-2026 23:43:29, MATLAB 9.13.0.2126072 (R2022b) Update 3
+wrote C1_rectangle_four_methods.png
+wrote C2_mic_center_vs_moved.png
+wrote C3_example_hit_FRF_and_coherence.png
+wrote C4_Lplate_vs_NX.png
+wrote C5_frame_vs_NX.png
+wrote C6_all_plates_vs_NX.png
+wrote C7_shape_match_MAC.png
+wrote C8_coherence_by_hit_point.png
+done: 8 charts written, 0 failed

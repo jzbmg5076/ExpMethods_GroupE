@@ -1,0 +1,5 @@
+"Config","CG (x, y, z) in","Ixx","Iyy","Izz","Principal I1, I2, I3","Principal axis angle from x (deg)","Principal axes","Source"
+"1","(6.450, 2.950, 0.250)","10.82","51.53","62.19","10.82, 51.53, 62.19","0.00","Along the plate edges","MATLAB"
+"2","(8.659, 2.042, 0.387)","9.977","54.51","64.23","9.11, 55.37, 64.23","-7.87","Tilted 7.9 deg from the long edge","MATLAB"
+"3","(11.144, 5.581, 0.258)","151.8","584.8","736.2","151.5, 585.1, 736.2","-1.52","Tilted 1.5 deg from the long edge","MATLAB"
+"4","(5.934, 3.032, 0.509)","24.65","105.9","128.9","24.65, 105.9, 128.9","-13.30","Tilted 13.3 deg from the rectangle long edge","MATLAB combination of Configs 1 and 2"

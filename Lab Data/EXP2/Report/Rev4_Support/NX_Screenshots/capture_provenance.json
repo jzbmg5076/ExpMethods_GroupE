@@ -1,0 +1,66 @@
+{
+  "capture_date": "2026-10-11",
+  "method": "Computer-use sky.get_window_state of Siemens NX ugraf.exe",
+  "application": "Designcenter NX 2512, Layout Pre/Post",
+  "displayed_result": "Solution 1, Static Step 1, nodal temperature scalar",
+  "units": "degrees Celsius",
+  "processing": "Native slide crop only. Original PNGs retained. No replacement rendering.",
+  "display_settings": "Smooth contour, mesh edges off, native Celsius conversion; no model save",
+  "screenshots": [
+    {
+      "rod": "Copper",
+      "screenshot": "Copper_contour_full.png",
+      "screenshot_sha256": "f70138639b5384575d10325909ef239606d5a81a57ac7f9cee1cb8209c89573d",
+      "simulation": "C:\\Users\\USER\\College\\Fall26\\ExperimentalMethods\\Lab Data\\EXP2\\NX\\AI_SIM_TAKE_2\\copper_sim1.sim",
+      "simulation_sha256": "1274a78958dc58b5df508c42ab2dabfe014c625ef373b66c6331708ecdc295ea",
+      "result": "C:\\Users\\USER\\College\\Fall26\\ExperimentalMethods\\Lab Data\\EXP2\\NX\\AI_SIM_TAKE_2\\copper_sim1-solution_1.op2",
+      "result_sha256": "1b0e20121a597bf1728a8f5faa0fe13df0e4a2764d54d451abbe90921667d53c",
+      "observed_min_C": 37.69,
+      "observed_max_C": 51.22
+    },
+    {
+      "rod": "Aluminum",
+      "screenshot": "Aluminum_contour_full.png",
+      "screenshot_sha256": "ad01693e6b4fee9cda56ddd85d2d40dbc39d698961aafdc45573769ad7da8f28",
+      "simulation": "C:\\Users\\USER\\College\\Fall26\\ExperimentalMethods\\Lab Data\\EXP2\\NX\\AI_SIM_TAKE_2\\Aluminum_sim1.sim",
+      "simulation_sha256": "0578316ace99aa34f3c81987c40d7c9855e1e59f5c7b4238a33d612c0c180b68",
+      "result": "C:\\Users\\USER\\College\\Fall26\\ExperimentalMethods\\Lab Data\\EXP2\\NX\\AI_SIM_TAKE_2\\aluminum_sim1-solution_1.op2",
+      "result_sha256": "582abe8fe902647166095f3d65e6d7ff6c68429bbf43971f7cd9a68165b0561f",
+      "observed_min_C": 31.57,
+      "observed_max_C": 71.23
+    },
+    {
+      "rod": "Brass",
+      "screenshot": "Brass_contour_full.png",
+      "screenshot_sha256": "2d92dc8eb17c72c9312d330355ce318ab329a23e2ef5d863e94247ae195a16bc",
+      "simulation": "C:\\Users\\USER\\College\\Fall26\\ExperimentalMethods\\Lab Data\\EXP2\\NX\\AI_SIM_TAKE_2\\Brass_sim1.sim",
+      "simulation_sha256": "24e7c4cd4b1cef77d276fdaabcec241a9195148fb455aa87c73fc7a6f03a6ffd",
+      "result": "C:\\Users\\USER\\College\\Fall26\\ExperimentalMethods\\Lab Data\\EXP2\\NX\\AI_SIM_TAKE_2\\brass_sim1-solution_1.op2",
+      "result_sha256": "2cc0a4a82eb391265d1b8709c2212feb31b79870fc02b96a19961145fa851c28",
+      "observed_min_C": 28.92,
+      "observed_max_C": 72.21
+    },
+    {
+      "rod": "Stainless",
+      "screenshot": "Stainless_contour_full.png",
+      "screenshot_sha256": "c6882392b2e36eb43a82bc17c75887b73d959be10661486567495dff5af8579e",
+      "simulation": "C:\\Users\\USER\\College\\Fall26\\ExperimentalMethods\\Lab Data\\EXP2\\NX\\AI_SIM_TAKE_2\\steel_sim1.sim",
+      "simulation_sha256": "7cf7d2af5f3be6b405a7ddd123af08271be9ccb58d8ae6fad65d3dc600264046",
+      "result": "C:\\Users\\USER\\College\\Fall26\\ExperimentalMethods\\Lab Data\\EXP2\\NX\\AI_SIM_TAKE_2\\steel_sim1-solution_1.op2",
+      "result_sha256": "e7055b698ef44e4fceb711f179e643cd0d9f93a69f097ba2b9535ba9043cc6c1",
+      "observed_min_C": 24.23,
+      "observed_max_C": 149.17
+    },
+    {
+      "rod": "CuTube",
+      "screenshot": "CuTube_contour_full.png",
+      "screenshot_sha256": "39cd748f22678e6e401f3c19861df79f858dc6c75719bcee9d2f0b5fdab0ddaf",
+      "simulation": "C:\\Users\\USER\\College\\Fall26\\ExperimentalMethods\\Lab Data\\EXP2\\NX\\AI_SIM_TAKE_2\\Copper_hollow_sim1.sim",
+      "simulation_sha256": "3efc100be1bbdc78efaebb0bdb6d1ed6f50db9c472253c5114abd5d7a3041d10",
+      "result": "C:\\Users\\USER\\College\\Fall26\\ExperimentalMethods\\Lab Data\\EXP2\\NX\\AI_SIM_TAKE_2\\copper_hollow_sim1-solution_1.op2",
+      "result_sha256": "5d47f8c5fcf1ee31f98c30068d64b72456c75deca40c58c5b31b7b6daf4df339",
+      "observed_min_C": 33.9,
+      "observed_max_C": 62.49
+    }
+  ]
+}

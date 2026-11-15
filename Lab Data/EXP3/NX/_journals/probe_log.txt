@@ -1,0 +1,5 @@
+solutions ['CornerSprings_Modal'] constraints ['Fixed_Ground']
+added via sol.AddBc
+bcs in sol ['Fixed_Ground']
+solve (1, 0, 0)
+done

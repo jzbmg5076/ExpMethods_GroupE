@@ -1,0 +1,3 @@
+File,Run,Channel1Period_s,Channel2Period_s,AdoptedPeriod_s,Frequency_Hz,EquivalentSimpleLength_in,ExperimentalMOI_kgm2,ExperimentalMOI_lbm_in2,AnalyticalMOI_kgm2,AnalyticalMOI_lbm_in2,SignedError_pct,Assessment
+test2settled.MAT,X run: into/out of table,1.49075,1.386125,1.49075,0.670803286936106,21.733859653584,0.00547238038768192,18.700064475953,0.00317558975095833,10.8515360565516,72.3264280605031,Provisional: geometry/conditioning dominates
+Ytest1.MAT,Y run: side to side,1.0815,1.080875,1.0815,0.924641701340731,11.4387948135993,NaN,NaN,NaN,NaN,NaN,Period usable; MOI not identifiable from this motion

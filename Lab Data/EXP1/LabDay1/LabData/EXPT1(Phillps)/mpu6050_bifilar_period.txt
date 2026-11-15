@@ -1,0 +1,158 @@
+// MPU-6050 Short Example Sketch
+// www.elegoo.com
+// 2016.12.9
+// Extended for bifilar pendulum moment-of-inertia lab: adds automatic
+// oscillation period/frequency estimate after each capture.
+
+#include<Wire.h>
+const int MPU_addr=0x68; // I2C address of the MPU-6050
+
+int16_t AcX[2050];
+int16_t AcY[2050];
+int16_t AcZ[2050];
+unsigned long start_time;
+unsigned long end_time;
+int16_t num_cap = 1;
+
+// how sensitive the period detector is to noise: bigger = less sensitive
+float hyst_frac = 0.10;
+
+void setup(){
+  Wire.begin();
+  Wire.beginTransmission(MPU_addr);
+  Wire.write(0x6B); // PWR_MGMT_1 register
+  Wire.write(0); // set to zero (wakes up the MPU-6050)
+  Wire.endTransmission(true);
+  Serial.begin(115200); // 9600
+  delay(1000);
+}
+
+void loop() {
+  int i;
+  if(num_cap) {
+    Serial.println("% Start swing");
+    delay(2000);
+    start_time = millis();
+    for (i=0;i<2048;i++) {
+      Wire.beginTransmission(MPU_addr);
+      Wire.write(0x3B); // starting with register 0x3B (ACCEL_XOUT_H)
+      Wire.endTransmission(false);
+      Wire.requestFrom(MPU_addr,6,true); // request a total of 14 registers
+      AcX[i]=Wire.read()<<8|Wire.read(); // 0x3B (ACCEL_XOUT_H) & 0x3C (ACCEL_XOUT_L)
+      AcY[i]=Wire.read()<<8|Wire.read(); // 0x3D (ACCEL_YOUT_H) & 0x3E (ACCEL_YOUT_L)
+      AcZ[i]=Wire.read()<<8|Wire.read(); // 0x3F (ACCEL_ZOUT_H) & 0x40 (ACCEL_ZOUT_L)
+    }
+    end_time = millis();
+
+    Serial.print("% Capture: ");
+    Serial.print(end_time-start_time);
+    Serial.println(" mS");
+
+    // average seconds between samples, used to turn the period (in
+    // samples) into a period in seconds
+    float dt = (end_time-start_time)/1000.0/2048.0;
+
+    Serial.println("% -=- X, Y, Z -=-");
+    Serial.print("X = [");
+    for (i=0; i<2048; i++) {
+      Serial.print(AcX[i]);
+      Serial.print(" ");
+    }
+    Serial.println("]; ");
+    Serial.print("Y = [");
+    for (i=0; i<2048; i++) {
+      Serial.print(AcY[i]);
+      Serial.print(" ");
+    }
+    Serial.println("]; ");
+    Serial.print("Z = [");
+    for (i=0; i<2048; i++) {
+      Serial.print(AcZ[i]);
+      Serial.print(" ");
+    }
+    Serial.println("]; ");
+
+    Serial.println("% -=- Period estimate -=-");
+    find_period("X", AcX, dt);
+    find_period("Y", AcY, dt);
+    find_period("Z", AcZ, dt);
+
+    Serial.println("% -=-=-=-=-");
+    num_cap--;
+  } else { delay(1000); }
+}
+
+// looks through data[] for a repeating swing and prints its period and
+// frequency. dt is the seconds between samples.
+void find_period(char *name, int16_t *data, float dt) {
+  int i;
+
+  // find the average value and the min/max so we know how big the swing is
+  long sum = 0;
+  int16_t min_val = data[0];
+  int16_t max_val = data[0];
+  for (i=0; i<2048; i++) {
+    sum += data[i];
+    if (data[i] < min_val) min_val = data[i];
+    if (data[i] > max_val) max_val = data[i];
+  }
+  float avg = sum / 2048.0;
+  float swing = max_val - min_val;
+
+  if (swing < 4) {
+    Serial.print("% ");
+    Serial.print(name);
+    Serial.println(": no significant oscillation detected");
+    return;
+  }
+
+  float threshold = swing * hyst_frac;
+
+  // count how many times the signal crosses back up through the average,
+  // and remember where each crossing happened
+  int cross_index[100];
+  int cross_count = 0;
+  boolean ready = true; // true = waiting for the next upward crossing
+  for (i=0; i<2048 && cross_count<100; i++) {
+    float v = data[i] - avg;
+    if (ready && v > threshold) {
+      cross_index[cross_count] = i;
+      cross_count++;
+      ready = false;
+    } else if (!ready && v < -threshold) {
+      ready = true;
+    }
+  }
+
+  if (cross_count < 3) {
+    Serial.print("% ");
+    Serial.print(name);
+    Serial.println(": not enough cycles captured for a period estimate");
+    return;
+  }
+
+  // period = time between consecutive crossings, averaged over all cycles
+  float period_sum = 0;
+  float period_sum2 = 0;
+  int num_periods = cross_count - 1;
+  for (i=0; i<num_periods; i++) {
+    float period = (cross_index[i+1] - cross_index[i]) * dt;
+    period_sum += period;
+    period_sum2 += period * period;
+  }
+  float avg_period = period_sum / num_periods;
+  float variance = period_sum2/num_periods - avg_period*avg_period;
+  float std_dev = variance > 0 ? sqrt(variance) : 0;
+
+  Serial.print("% ");
+  Serial.print(name);
+  Serial.print(": cycles=");
+  Serial.print(num_periods);
+  Serial.print("  T=");
+  Serial.print(avg_period, 5);
+  Serial.print(" s  (+/- ");
+  Serial.print(std_dev, 5);
+  Serial.print(")  f=");
+  Serial.print(1.0/avg_period, 4);
+  Serial.println(" Hz");
+}

@@ -1,0 +1,72 @@
+
+*** 12:21:46 *** 
+Starting Nastran Exporter
+
+*** 12:21:46 *** 
+Writing file C:\Users\ohiog\College\Fall26\ExperimentalMethods\Lab 
+Data\EXP3\NX\P3_CutoutFrame_Springs\experiment3_model3_sim1-cornersprings_modal.dat
+ 
+*** 12:21:47 *** 
+Writing SIMCENTER NASTRAN 2512.0 compatible deck
+
+*** 12:21:47 *** 
+Writing Nastran System section
+
+*** 12:21:47 *** 
+Writing File Management section
+
+*** 12:21:47 *** 
+Writing Executive Control section
+
+*** 12:21:47 *** 
+Writing Case Control section
+
+*** 12:21:48 *** 
+Writing Bulk Data section
+
+*** 12:21:48 *** 
+Writing Nodes
+
+*** 12:21:55 *** 
+Writing Elements
+
+*** 12:22:01 *** 
+Writing Physical Properties
+
+*** 12:22:01 *** 
+Writing Materials
+
+*** 12:22:01 *** 
+Writing Degree-of-Freedom Sets
+
+*** 12:22:01 *** 
+Writing Loads and Constraints
+
+*** 12:22:03 *** 
+Writing Coordinate Systems
+
+*** 12:22:03 *** 
+Validating Solution Setup
+
+*** 12:22:03 *** 
+Summary of Bulk Data cards written
+
++----------+----------+
+|   NAME   |  NUMBER  |
++----------+----------+
+| CELAS1   | 4        |
+| CTETRA   | 79632    |
+| EIGRL    | 2        |
+| GRID     | 148344   |
+| MAT1     | 1        |
+| MATT1    | 1        |
+| PARAM    | 6        |
+| PELAS    | 1        |
+| PSOLID   | 2        |
+| SPC      | 44074    |
+| TABLEM1  | 3        |
++----------+----------+
+
+*** 12:22:03 *** 
+Nastran Deck Successfully Written
+

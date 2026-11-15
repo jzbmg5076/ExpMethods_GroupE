@@ -1,0 +1,60 @@
+NX / SIMPLIFIED ANALYTICAL PLATE COMPARISON
+===========================================
+Source: EXP1/Lab/Models_NX/Experiment1_Model_MomentOFInertias.pdf
+No experimental measurements are used.
+
+MASS BASIS
+  MATLAB uses the user-provided finished masses shown below. For inertia comparison only, both MATLAB and NX are divided by their respective masses and reported on a common 1.000000 kg basis.
+  The inferred NX masses below describe the saved CAD materials/geometries only; they are not predicted physical weights.
+
+MODEL MAPPING AND NATIVE NX PROPERTIES
+  Plate 1 -> NX Model3 | Polyethylene     | t = 0.500 in | MATLAB m = 1.158974 kg | inferred NX m = 0.957987 kg | implied NX W = 9.394644 N = 2.112000 lbf
+    Native NX I = [    8.1896    45.0045    53.1061] lbm*in^2
+  Plate 2 -> NX Model2 | Aluminum_6061    | t = 0.500 in | MATLAB m = 4.535017 kg | inferred NX m = 4.767074 kg | implied NX W = 46.749030 N = 10.509600 lbf
+    Native NX I = [  153.1160   583.9527   736.6308] lbm*in^2
+  Plate 3 -> NX Model4 | S/Steel_PH15-5   | t = 0.500 in | MATLAB m = 9.052280 kg | inferred NX m = 11.561162 kg | implied NX W = 113.376273 N = 25.488000 lbf
+    Native NX I = [  419.2048  1579.8359  1997.9787] lbm*in^2
+  Plate 4 -> NX Model1 | S/Steel_PH15-5   | t = 0.445 in | MATLAB m = 1.687000 kg | inferred NX m = 4.468008 kg | implied NX W = 43.816190 N = 9.850271 lbf
+    Native NX I = [   28.0227   133.5241   161.2217] lbm*in^2
+
+CG COMPARISON IN A COMMON FRAME [in]
+  Delta convention: NX - MATLAB. Plate 1 NX y was shifted by +6.6 cm/2.54 to register the origins.
+  Plate 1: MATLAB [  8.659211   4.640605   0.3750] | NX [  8.658700   4.640725   0.2500]
+           NX-MAT [ -0.000511  +0.000121  -0.1250] | planar offset = 0.000525 in (0.013331 mm)
+  Plate 2: MATLAB [ 11.143786   5.580673   0.2500] | NX [ 10.948300   5.667400   0.2500]
+           NX-MAT [ -0.195486  +0.086727  +0.0000] | planar offset = 0.213861 in (5.432073 mm)
+  Plate 3: MATLAB [ 11.993665   6.223114   0.2500] | NX [ 11.993200   6.222800   0.2500]
+           NX-MAT [ -0.000465  -0.000314  +0.0000] | planar offset = 0.000561 in (0.014249 mm)
+  Plate 4: MATLAB [  6.450000   2.950000   0.2250] | NX [  6.450700   2.950100   0.2225]
+           NX-MAT [ +0.000700  +0.000100  -0.0025] | planar offset = 0.000707 in (0.017961 mm)
+
+MOMENT COMPARISON AFTER NORMALIZING BOTH MATLAB AND NX TO 1.000 kg [kg*cm^2]
+  Signed delta = NX(1 kg) - MATLAB(1 kg). Symmetric difference is reported because neither model is ground truth.
+  Plate 1 / NX Model3:
+    IXX: MATLAB =    25.173258 | NX =    25.017057 | delta =   -0.156202 ( -0.6205%) | symmetric diff = 0.6224%
+    IYY: MATLAB =   137.612239 | NX =   137.476814 | delta =   -0.135424 ( -0.0984%) | symmetric diff = 0.0985%
+    IZZ: MATLAB =   162.180659 | NX =   162.225054 | delta =   +0.044395 ( +0.0274%) | symmetric diff = 0.0274%
+  Plate 2 / NX Model2:
+    IXX: MATLAB =    97.962399 | NX =    93.994366 | delta =   -3.968033 ( -4.0506%) | symmetric diff = 4.1343%
+    IYY: MATLAB =   377.366392 | NX =   358.475036 | delta =  -18.891356 ( -5.0061%) | symmetric diff = 5.1346%
+    IZZ: MATLAB =   475.059974 | NX =   452.200585 | delta =  -22.859389 ( -4.8119%) | symmetric diff = 4.9305%
+  Plate 3 / NX Model4:
+    IXX: MATLAB =   106.090252 | NX =   106.110393 | delta =   +0.020141 ( +0.0190%) | symmetric diff = 0.0190%
+    IYY: MATLAB =   399.860879 | NX =   399.892863 | delta =   +0.031984 ( +0.0080%) | symmetric diff = 0.0080%
+    IZZ: MATLAB =   505.682314 | NX =   505.734439 | delta =   +0.052125 ( +0.0103%) | symmetric diff = 0.0103%
+  Plate 4 / NX Model1:
+    IXX: MATLAB =    18.741341 | NX =    18.353936 | delta =   -0.387405 ( -2.0671%) | symmetric diff = 2.0887%
+    IYY: MATLAB =    89.354024 | NX =    87.453842 | delta =   -1.900182 ( -2.1266%) | symmetric diff = 2.1494%
+    IZZ: MATLAB =   107.877624 | NX =   105.594849 | delta =   -2.282776 ( -2.1161%) | symmetric diff = 2.1387%
+
+PLATE 1 THICKNESS-HARMONIZED SENSITIVITY [kg*cm^2]
+  NX Model3 uses t = 0.500 in; MATLAB uses the measured t = 0.750 in. At 1 kg, adjusting only NX thickness gives
+  NX harmonized I = [   25.185067   137.644825   162.225054].
+
+INTERPRETATION
+  Plate 1: The planar CG offset is about 0.0005 in. The normalized drawing-axis moments differ by at most 0.62%; after harmonizing thickness, all three differ by less than 0.05%.
+  Plate 2: The roughly 0.215 in CG offset and 4-5% inertia differences mainly reflect the different NX opening geometry versus the simplified measured opening.
+  Plate 3: In-plane CGs agree within about 0.001 in, and normalized inertias agree within about 0.02%.
+  Plate 4: In-plane CGs agree within about 0.001 in. Normalized inertias differ by about 2.1%, consistent with the NX model retaining its exact hole/edge geometry and a 0.445-in thickness.
+  Small residuals are expected because NX retains detailed hole cutouts and exact CAD profiles, while MATLAB intentionally uses simplified closed-form boundaries.
+  NX callouts are rounded to four decimal places, so inferred masses and normalized values are approximate.

@@ -1,0 +1,62 @@
+
+Plate 3 - Irregular Polygon-Window Frame
+========================================
+Source geometry: Plate_measurements.pdf page 5
+Model scope: closed-form geometry only; no oscillation/test data used.
+
+ASSUMPTIONS AND REFERENCE FRAME
+  Finished-plate mass: 9.052280 kg (user-provided model input)
+  Weight corresponding to this mass at standard gravity: 88.772538 N = 19.956861 lbf
+  Uniform through-thickness extrusion: 1.270000 cm = 0.500000 in
+  Origin: lower-left corner of the stated outer bounding box, bottom face
+  Axes: +x right, +y up, +z through the thickness
+  Geometry note: Concave opening uses all seven labeled vertex coordinates; page-5 thickness is assumed as 0.5 in.
+  Small-hole treatment: Included: 16 evenly spaced perimeter holes. Diameter 0.184 in is carried from Plate 1; centers use the user-directed nominal 0.250 in edge offset.
+
+NET GEOMETRY
+  Planform area: 1164.340185854 cm^2
+  Volume: 1478.712036035 cm^3
+  Effective uniform density required by the specified mass: 0.006121732583 kg/cm^3
+
+CENTER OF GRAVITY
+  [x y z] = [30.463909110  15.806708997  0.635000000] cm
+          = [11.993665004  6.223113778  0.250000000] in
+
+FINITE-THICKNESS CENTROIDAL INERTIA TENSOR [kg*cm^2]
+  [ 960.358626488  -105.388158328   0.000000000]
+  [-105.388158328   3619.652497427   0.000000000]
+  [ 0.000000000   0.000000000   4577.577720273]
+  IXX = 960.358626488, IYY = 3619.652497427, IZZ = 4577.577720273 kg*cm^2
+  IXY tensor term = -105.388158328 kg*cm^2 (tensor convention: -integral(x*y dm))
+
+FINITE-THICKNESS CENTROIDAL INERTIA TENSOR [lbm*in^2]
+  [ 328.171051064  -36.012945304   0.000000000]
+  [-36.012945304   1236.897479549   0.000000000]
+  [ 0.000000000   0.000000000   1564.236994759]
+  IXX = 328.171051064, IYY = 1236.897479549, IZZ = 1564.236994759 lbm*in^2
+
+THIN-PLATE COMPARISON [kg*cm^2]
+  IXX = 959.141924667, IYY = 3618.435795606, IZZ = 4577.577720273
+  Finite-thickness increase in drawing-axis IXX/IYY: 1.216701821 kg*cm^2 each
+
+PRINCIPAL RESULTS - FINITE THICKNESS
+  I1 = 956.188619150 kg*cm^2 = 0.095618862 kg*m^2 = 326.746087875 lbm*in^2
+       e1 = [ 0.999218101   0.039537144   0.000000000]
+  I2 = 3623.822504765 kg*cm^2 = 0.362382250 kg*m^2 = 1238.322442738 lbm*in^2
+       e2 = [-0.039537144   0.999218101   0.000000000]
+  I3 = 4577.577720273 kg*cm^2 = 0.457757772 kg*m^2 = 1564.236994759 lbm*in^2
+       e3 = [ 0.000000000   0.000000000   1.000000000]
+
+ANALYTICAL CHECKS: PASS
+  Tensor symmetry error: 0.000e+00
+  Principal-axis orthogonality error: 0.000e+00
+  Principal-axis determinant: 1.000000000000
+  Thin-plate perpendicular-axis error: 4.547e-13 kg*cm^2
+  Finite-extrusion identity error: 7.110e-13 kg*cm^2
+
+COURSE PENDULUM CONTEXT (not evaluated because d, L, and r were not supplied)
+  Compound: f = (1/(2*pi))*sqrt(m*g*d/(J_CG + m*d^2))
+            d is the pivot-axis-to-CG distance.
+  Bifilar:  f = (1/(2*pi))*sqrt(m*g*r^2/(J_CG*L))
+            L is cable length and r is the suspension radius.
+  Use one consistent unit system and the J_CG for the tested axis.

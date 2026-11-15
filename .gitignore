@@ -1,0 +1,13 @@
+# NX solver outputs (regenerate by solving the .sim in NX)
+*.op2
+*.f04
+*.f06
+*.xdb
+*.mstr
+*.bun
+# Office / OS temp files
+~$*
+*.tmp
+Thumbs.db
+desktop.ini
+.DS_Store

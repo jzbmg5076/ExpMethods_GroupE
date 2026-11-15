@@ -1,0 +1,23 @@
+z through board
+x  into the  tale
+y along the tale 
+
+
+
+We performed the NX model. As  per the directions in "Presentation for Siemens NX - Moments of Inertia" in "C:\path\to\ExpMethods_GroupE\EXP1\EXPT_Moments_of_Inertia_MOI"
+
+Our Plate is a stainlees steel rectangular plate  of the dimensions. 
+Length= 12.9 in
+Width= 5.9 in
+t= .45 in
+mass= 1.687
+
+There are also holes around the edge  with a diameter of 0.18 inches. However for the analytical model I don't think it matters as much if those are involved or not. 
+
+
+Our nx model provided the following. 
+
+COM: (6.4507, 2.9501, 0.22250)
+Moments  of Inertia: (28.0227, 133.5241, 161.2217) lbm in^2
+
+My question is if we are calculating the matlab analytical model correctly

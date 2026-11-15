@@ -1,0 +1,136 @@
+#include <Wire.h> 
+#include <LiquidCrystal_I2C.h>
+
+// Thermistor parameters from the datasheet
+#define RT0 10000
+#define B 3977
+#define T0C 25
+
+#define adcBits       10  // bits
+#define adcScale    1023  // 2^bits - 1
+#define adcRefVolt   5.0  // supply voltage relative to ground ; 4.7 when USB powered
+
+// Our series resistor value = 10 kΩ
+#define R 10000  
+
+#define tDelay  500       // display update ms ; update every 0.5 sec
+#define sDelay 5000       // save data delay ms ; save every 5 sec
+#define nChan     4
+#define nSamp   375       // 250 ~20 min ; 375 ~30 min
+#define degSym ((char)223)
+
+// Variables for calculations
+float T0, TX0, TX1, TX2, TX3;  //  A4 & A5  shared with I2C bus
+
+float Temps[nChan*nSamp];
+unsigned idx      = 0;
+int      prevSave = -sDelay;
+
+LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 20 chars and 4 line display
+
+void setup() {
+  // Setup serial communication
+  Serial.begin(115200);
+  Serial.println("Initializing...");
+
+  // Set the resolution to # bits (10-14)
+  analogReadResolution(adcBits);
+  lcd.init();                      // initialize the lcd 
+
+  Serial.println("Commands...");
+  Serial.println("    [D]ump buffer");
+  Serial.println("    [C]lear buffer");
+
+  // Convert T0 from Celsius to Kelvin
+  T0 = T0C + 273.15;
+}
+
+float Temp (int val) {
+  float VRT, VR, RT, ln, TX;
+  // Read the voltage across the thermistor
+  VRT = (adcRefVolt / adcScale) * val;
+  
+  // Calculate the voltage across the resistor
+  VR = adcRefVolt - VRT;
+
+  // Calculate resistance of the thermistor
+  RT = VRT / (VR / R);
+  
+  // Calculate temperature from thermistor resistance
+  ln = log(RT / RT0);
+  TX = (1 / ((ln / B) + (1 / T0)));
+
+  return TX;
+}
+
+void dispTemps(float T0, float T1, float T2, float T3)
+{
+  char buf[20];
+  
+  // Print a message to the LCD.
+  lcd.backlight();
+  lcd.setCursor(0,0);   lcd.print("T0: ");
+    dtostrf(T0,5,1,buf);  lcd.print(buf); lcd.print(degSym); lcd.print("C  ");
+    dtostrf(1.8*T0+32,5,1,buf);  lcd.print(buf); lcd.print(degSym); lcd.print("F");
+  lcd.setCursor(0,1);   lcd.print("T1: ");
+    dtostrf(T1,5,1,buf);  lcd.print(buf); lcd.print(degSym); lcd.print("C  ");
+    dtostrf(1.8*T1+32,5,1,buf);  lcd.print(buf); lcd.print(degSym); lcd.print("F");
+  lcd.setCursor(0,2);   lcd.print("T2: ");
+    dtostrf(T2,5,1,buf);  lcd.print(buf); lcd.print(degSym); lcd.print("C  ");
+    dtostrf(1.8*T2+32,5,1,buf);  lcd.print(buf); lcd.print(degSym); lcd.print("F");
+  lcd.setCursor(0,3);   lcd.print("T3: ");
+    dtostrf(T3,5,1,buf);  lcd.print(buf); lcd.print(degSym); lcd.print("C  ");
+    dtostrf(1.8*T3+32,5,1,buf);  lcd.print(buf); lcd.print(degSym); lcd.print("F");
+}
+
+void loop() {
+  // Read thermistors every 500 mS
+  TX0 = Temp(analogRead(A0));
+  TX1 = Temp(analogRead(A1));
+  TX2 = Temp(analogRead(A2));
+  TX3 = Temp(analogRead(A3));
+
+  // Convert to Celsius
+  TX0 = TX0 - 273.15;
+  TX1 = TX1 - 273.15;
+  TX2 = TX2 - 273.15;
+  TX3 = TX3 - 273.15;
+ 
+  dispTemps(TX0, TX1, TX2, TX3);
+
+  // Add to saved values every ~5 S
+  if ((millis()-prevSave) >= sDelay) {
+    prevSave = millis();
+    if (idx < nSamp) {
+      Temps[nChan*idx+0] = TX0;
+      Temps[nChan*idx+1] = TX1;
+      Temps[nChan*idx+2] = TX2;
+      Temps[nChan*idx+3] = TX3;
+
+      idx ++;
+    } else {
+      Serial.println("Temps buffer full");
+    }
+
+  }
+
+  if (Serial.available() > 0) {
+    // Data is available to read
+    char incomingByte = Serial.read(); // Read a single character
+
+    if (incomingByte == 'D') {  // Dump buffer
+      for (int ii=0; ii<(nChan*idx); ii++) {
+        Serial.print(Temps[ii],1);
+        Serial.print(" ");
+      }
+      Serial.println();
+    }
+
+    if (incomingByte == 'C') {  // Clear buffer
+      idx = 0;
+    }
+  }
+
+
+  delay(tDelay);
+}

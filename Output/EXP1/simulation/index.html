@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101822">
+  <title>Chain & Plate Lab · Experimental Methods</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark">◉</div><div><strong>Chain &amp; Plate Lab</strong><small>Experimental Methods · moment of inertia simulator</small></div></div>
+    <div class="top-actions">
+      <button type="button" id="exportConfig" class="button ghost">Export configuration</button>
+      <label class="button ghost file-button">Import configuration<input id="importConfig" type="file" accept="application/json,.json"></label>
+    </div>
+  </header>
+  <main class="shell">
+    <aside class="controls" aria-label="Simulation controls">
+      <section class="control-section">
+        <div class="section-heading"><div><span class="eyebrow">01 · BODY</span><h2>Plate configuration</h2></div><span id="plateCount" class="count"></span></div>
+        <div class="inline-controls"><select id="presetSelect" aria-label="Plate preset"><option value="rectangle">Rectangle · lab plate</option><option value="notched">Plate 1 · notched HDPE</option><option value="offset">Plate 2 · offset frame</option><option value="irregular">Plate 3 · irregular frame</option></select><button id="addPlate" class="button primary" type="button">Add plate</button></div>
+        <div id="plateList" class="plate-list" role="list"></div>
+        <div class="inline-controls"><button id="duplicatePlate" class="button ghost" type="button">Duplicate selected</button><button id="removePlate" class="button danger" type="button">Remove</button></div>
+        <div class="field-grid">
+          <label class="full">Plate name<input data-kind="plate" data-key="name" type="text"></label>
+          <label>Material<select data-kind="plate" data-key="material"><option value="hdpe">HDPE</option><option value="aluminum">Aluminum 6061</option><option value="stainless">Stainless steel</option><option value="custom">Custom</option></select></label>
+          <label>Mass basis<select data-kind="plate" data-key="massMode"><option value="measured">Measured mass</option><option value="density">Density × volume</option></select></label>
+          <label>Mass <span class="unit">kg</span><input data-kind="plate" data-key="massKg" type="number" step="any" min="0"></label>
+          <label>Density <span class="unit">kg/m³</span><input data-kind="plate" data-key="density" type="number" step="any" min="0"></label>
+          <label>Thickness <span class="unit">in</span><input data-kind="plate" data-key="thicknessIn" type="number" step="any" min="0"></label>
+        </div>
+        <p id="plateSource" class="source-note"></p>
+        <details class="disclosure"><summary>Exact outline, openings &amp; holes <span>editable</span></summary>
+          <p>Coordinates are inches. Enter one x,y vertex per line. Separate openings with a blank line. Hole rows are x,y,radius.</p>
+          <label>Outer polygon<textarea id="outerEditor" spellcheck="false" rows="5"></textarea></label>
+          <label>Opening polygons<textarea id="voidEditor" spellcheck="false" rows="5"></textarea></label>
+          <label>Through-holes<textarea id="holeEditor" spellcheck="false" rows="5"></textarea></label>
+          <button id="applyGeometry" class="button ghost" type="button">Apply geometry</button>
+        </details>
+        <details class="disclosure"><summary>Assembly placement <span>6 degrees of freedom</span></summary>
+          <p>Local polygon x/y lie in the plate face. Translate the local origin, then rotate roll (x), pitch (y), yaw (z).</p>
+          <div class="field-grid" id="poseFields">
+            <label>X <span class="unit">in</span><input data-kind="pose" data-key="x" type="number" step="any"></label>
+            <label>Y <span class="unit">in</span><input data-kind="pose" data-key="y" type="number" step="any"></label>
+            <label>Z <span class="unit">in</span><input data-kind="pose" data-key="z" type="number" step="any"></label>
+            <label>Roll <span class="unit">°</span><input data-kind="pose" data-key="roll" type="number" step="any"></label>
+            <label>Pitch <span class="unit">°</span><input data-kind="pose" data-key="pitch" type="number" step="any"></label>
+            <label>Yaw <span class="unit">°</span><input data-kind="pose" data-key="yaw" type="number" step="any"></label>
+          </div>
+        </details>
+      </section>
+      <section class="control-section">
+        <div class="section-heading"><div><span class="eyebrow">02 · APPARATUS</span><h2>Suspension &amp; motion</h2></div></div>
+        <div class="field-grid">
+          <label class="full">Motion model<select data-kind="suspension" data-key="mode"><option value="compound">Rigid compound swing</option><option value="bifilar">Bifilar twist</option><option value="fourbar">Parallel-chain translation</option><option value="twolink">Chain + free plate hinge</option></select></label>
+          <label>Stock per strand <span class="unit">in</span><input data-kind="suspension" data-key="stockLengthIn" type="number" step="any" min="0"></label>
+          <label>Active length <span class="unit">in</span><input data-kind="suspension" data-key="chainLengthIn" type="number" step="any" min="0"></label>
+          <label>Strands <span class="unit">count</span><input data-kind="suspension" data-key="chainCount" type="number" step="1" min="1" max="20"></label>
+          <label>Chain linear density <span class="unit">kg/m</span><input data-kind="suspension" data-key="chainLinearDensityKgM" type="number" step="any" min="0"></label>
+          <label class="full">Gravity direction <span class="unit">x,y,z</span><input id="gravityInput" type="text" spellcheck="false" placeholder="0,-1,0"></label>
+          <label class="full" id="axisField">Pivot / hinge axis <span class="unit">x,y,z</span><input id="axisInput" type="text" spellcheck="false" placeholder="0,0,1"></label>
+          <label class="full" id="attachmentField">Plate attachment hole<select id="attachmentSelect"></select></label>
+          <label id="topSpacingField">Top half-spacing <span class="unit">in</span><input data-kind="suspension" data-key="topHalfSpacingIn" type="number" step="any" min="0"></label>
+          <label id="bottomModeField">Bottom spacing<select data-kind="suspension" data-key="bottomSpacingMode"><option value="manual">Manual half-spacing</option><option value="holes">From selected holes</option></select></label>
+          <label id="bottomSpacingField">Bottom half-spacing <span class="unit">in</span><input data-kind="suspension" data-key="bottomHalfSpacingIn" type="number" step="any" min="0"></label>
+          <label id="firstHoleField">Bottom hole A<select id="firstHoleSelect"></select></label>
+          <label id="secondHoleField">Bottom hole B<select id="secondHoleSelect"></select></label>
+          <label>Release angle <span class="unit">°</span><input data-kind="suspension" data-key="initialAngleDeg" type="number" step="any"></label>
+          <label id="secondAngleField">Plate release angle <span class="unit">°</span><input data-kind="suspension" data-key="secondAngleDeg" type="number" step="any"></label>
+          <label>Damping ratio <span class="unit">ζ</span><input data-kind="suspension" data-key="dampingRatio" type="number" step="any" min="0" max="0.99"></label>
+          <label>Simulation duration <span class="unit">s</span><input data-kind="suspension" data-key="durationS" type="number" step="any" min="0" max="120"></label>
+          <label class="full">Observed period <span class="unit">s · optional</span><input data-kind="suspension" data-key="observedPeriodS" type="number" step="any" min="0" placeholder="Compare a measured trial"></label>
+        </div>
+      </section>
+      <section class="control-section">
+        <div class="section-heading"><div><span class="eyebrow">03 · UNCERTAINTY</span><h2>Monte Carlo</h2></div></div>
+        <p class="section-copy">Independent Gaussian 1σ inputs. Invalid geometries are counted, not silently repaired.</p>
+        <div class="field-grid">
+          <label>Trials<input data-kind="monteCarlo" data-key="trials" type="number" step="1" min="10" max="10000"></label>
+          <label>Random seed<input data-kind="monteCarlo" data-key="seed" type="number" step="1"></label>
+          <label>Mass / density <span class="unit">%</span><input data-kind="monteCarlo" data-key="massPct" type="number" step="any" min="0"></label>
+          <label>Thickness <span class="unit">%</span><input data-kind="monteCarlo" data-key="thicknessPct" type="number" step="any" min="0"></label>
+          <label>Vertices <span class="unit">in</span><input data-kind="monteCarlo" data-key="vertexSigmaIn" type="number" step="any" min="0"></label>
+          <label>Hole centers <span class="unit">in</span><input data-kind="monteCarlo" data-key="holeSigmaIn" type="number" step="any" min="0"></label>
+          <label>Plate placement <span class="unit">in</span><input data-kind="monteCarlo" data-key="poseSigmaIn" type="number" step="any" min="0"></label>
+          <label>Chain length <span class="unit">in</span><input data-kind="monteCarlo" data-key="chainLengthSigmaIn" type="number" step="any" min="0"></label>
+          <label>Half-spacings <span class="unit">in</span><input data-kind="monteCarlo" data-key="spacingSigmaIn" type="number" step="any" min="0"></label>
+          <label>Chain density <span class="unit">%</span><input data-kind="monteCarlo" data-key="chainDensityPct" type="number" step="any" min="0"></label>
+          <label>Release angle <span class="unit">°</span><input data-kind="monteCarlo" data-key="angleSigmaDeg" type="number" step="any" min="0"></label>
+        </div>
+        <div class="inline-controls"><button id="runMonteCarlo" class="button primary" type="button">Run Monte Carlo</button><button id="exportCsv" class="button ghost" type="button" disabled>Export trials CSV</button></div>
+      </section>
+    </aside>
+    <section class="workspace" aria-label="Results">
+      <div class="workspace-intro"><div><span class="eyebrow">LIVE MODEL</span><h1>Explore the moving system</h1><p>Exact plate integrals · assembled 3D inertia tensor · nonlinear suspension dynamics</p></div><div id="modelBadge" class="model-badge">Rigid compound swing</div></div>
+      <div id="errorBox" class="error-box" role="alert" hidden></div>
+      <div class="metrics" id="metrics"></div>
+      <div class="visual-grid">
+        <section class="panel"><div class="panel-heading"><div><span class="eyebrow">BODY GEOMETRY</span><h2>Plate &amp; assembly plan</h2></div><span class="panel-note">inches · CG ● · principal axes ┄</span></div><div class="svg-wrap"><svg id="plateView" viewBox="0 0 640 380" role="img" aria-label="Plate plan view"></svg></div></section>
+        <section class="panel"><div class="panel-heading"><div><span class="eyebrow">TIME DOMAIN</span><h2>Apparatus motion</h2></div><span id="clockLabel" class="panel-note">t = 0.00 s</span></div><div class="svg-wrap"><svg id="motionView" viewBox="0 0 640 380" role="img" aria-label="Animated chain and plate motion"></svg></div><div class="playback"><button id="playButton" class="button ghost" type="button">▶ Play</button><input id="timeSlider" type="range" min="0" max="1000" value="0" aria-label="Simulation time"><span id="angleLabel">0.0°</span></div></section>
+      </div>
+      <section class="panel chart-panel"><div class="panel-heading"><div><span class="eyebrow">NUMERICAL INTEGRATION</span><h2>Angular displacement</h2></div><span class="panel-note">RK4 · nonlinear restoring torque</span></div><canvas id="traceChart" height="260" aria-label="Angular displacement over time"></canvas></section>
+      <div class="details-grid">
+        <section class="panel"><div class="panel-heading"><div><span class="eyebrow">RIGID BODY</span><h2>Mass properties</h2></div></div><div id="bodyDetails"></div></section>
+        <section class="panel"><div class="panel-heading"><div><span class="eyebrow">MODEL VALIDITY</span><h2>What the result assumes</h2></div></div><div id="warnings" class="warnings"></div></section>
+      </div>
+      <section class="panel"><div class="panel-heading"><div><span class="eyebrow">MONTE CARLO</span><h2>Period distribution</h2></div><span id="mcStatus" class="panel-note">Run trials to see uncertainty</span></div><div id="mcResults" class="mc-results empty">Choose uncertainty inputs and run the trials.</div><canvas id="histChart" height="220" hidden aria-label="Monte Carlo period histogram"></canvas></section>
+      <footer>Model scope: rigid plates, straight taut chains, ideal joints, and user-specified damping. Chain slack, impacts, link contact, flexure, and sensor filtering require additional measured parameters and are not predicted by this solver.</footer>
+    </section>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

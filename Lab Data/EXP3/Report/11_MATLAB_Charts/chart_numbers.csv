@@ -1,0 +1,114 @@
+chart,series,mode,value_plotted,frequency_Hz,reference_Hz
+C1 rectangle vs NX free-free,Blevins,1,1.32860938883967,457.6,451.6
+C1 rectangle vs NX free-free,Blevins,2,3.14697020421828,616.2,597.4
+C1 rectangle vs NX free-free,Blevins,3,1.17221999197108,1260.1,1245.5
+C1 rectangle vs NX free-free,Blevins,4,4.44753300903407,1352.7,1295.1
+C1 rectangle vs NX free-free,Accel,1,-0.157218777679369,450.89,451.6
+C1 rectangle vs NX free-free,Accel,2,0.468697689989961,600.2,597.4
+C1 rectangle vs NX free-free,Accel,3,-0.471296668004806,1239.63,1245.5
+C1 rectangle vs NX free-free,Accel,4,-0.0146706818006215,1294.91,1295.1
+C1 rectangle vs NX free-free,Mic,1,0.405225863596104,453.43,451.6
+C1 rectangle vs NX free-free,Mic,2,-0.331436223635762,595.42,597.4
+C1 rectangle vs NX free-free,Mic,3,0.422320353271788,1250.76,1245.5
+C1 rectangle vs NX free-free,Mic,4,-0.57910586055131,1287.6,1295.1
+C2 mic dB at accel mode freqs,Center,1,-0.56803926644487,0.936694643411586,450.89
+C2 mic dB at accel mode freqs,Center,2,-18.5688358041072,0.117912055372445,600.2
+C2 mic dB at accel mode freqs,Center,3,-4.6643748033058,0.584495618346405,1239.63
+C2 mic dB at accel mode freqs,Center,4,-14.4036408916816,0.190466216737752,1294.91
+C2 mic dB at accel mode freqs,Center,5,8.49212018021641,2.6583123505032,2174.04
+C2 mic dB at accel mode freqs,Center,6,0.336837549915011,1.03954160967246,2196.1
+C2 mic dB at accel mode freqs,Moved,1,-1.9720217342945,0.796890984048795,450.89
+C2 mic dB at accel mode freqs,Moved,2,-7.45709486425541,0.423784683964265,600.2
+C2 mic dB at accel mode freqs,Moved,3,8.54420702434457,2.67430139712244,1239.63
+C2 mic dB at accel mode freqs,Moved,4,5.93774613593754,1.9810129146035,1294.91
+C2 mic dB at accel mode freqs,Moved,5,11.1452243321265,3.60795586743425,2174.04
+C2 mic dB at accel mode freqs,Moved,6,13.3015127635384,4.62461558234748,2196.1
+C3 example hit (rectangle pt 15) median coherence 200-2500 Hz,Coherence,1,0.978969689507514,NaN,NaN
+C4 L-plate vs NX free-free (modes 1-4),Accel,1,-5.25224775224774,379.37,400.4
+C4 L-plate vs NX free-free (modes 1-4),Accel,2,-3.60193526860194,577.81,599.4
+C4 L-plate vs NX free-free (modes 1-4),Accel,3,-5.66011877569666,1032.55,1094.5
+C4 L-plate vs NX free-free (modes 1-4),Accel,4,-3.51854588443919,1305.78,1353.4
+C5 frame vs NX free-free (modes 1-4),Accel,1,-0.193178790301085,149.83,150.12
+C5 frame vs NX free-free (modes 1-4),Accel,2,6.42933383562503,169.51,159.27
+C5 frame vs NX free-free (modes 1-4),Accel,3,-0.118121578795738,346.69,347.1
+C5 frame vs NX free-free (modes 1-4),Accel,4,-1.65694282380398,421.4,428.5
+C6 all plates vs NX free-free,RectAccel,1,-0.157218777679369,NaN,NaN
+C6 all plates vs NX free-free,RectAccel,2,0.468697689989961,NaN,NaN
+C6 all plates vs NX free-free,RectAccel,3,-0.471296668004806,NaN,NaN
+C6 all plates vs NX free-free,RectAccel,4,-0.0146706818006215,NaN,NaN
+C6 all plates vs NX free-free,RectAccel,5,0.710612868856253,NaN,NaN
+C6 all plates vs NX free-free,RectAccel,6,-0.0955327085797375,NaN,NaN
+C6 all plates vs NX free-free,RectMic,1,0.405225863596104,NaN,NaN
+C6 all plates vs NX free-free,RectMic,2,-0.331436223635762,NaN,NaN
+C6 all plates vs NX free-free,RectMic,3,0.422320353271788,NaN,NaN
+C6 all plates vs NX free-free,RectMic,4,-0.57910586055131,NaN,NaN
+C6 all plates vs NX free-free,RectMic,5,-1.03997776439523,NaN,NaN
+C6 all plates vs NX free-free,RectMic,6,-0.486761896096799,NaN,NaN
+C6 all plates vs NX free-free,LPlate,1,-5.25224775224774,NaN,NaN
+C6 all plates vs NX free-free,LPlate,2,-3.60193526860194,NaN,NaN
+C6 all plates vs NX free-free,LPlate,3,-5.66011877569666,NaN,NaN
+C6 all plates vs NX free-free,LPlate,4,-3.51854588443919,NaN,NaN
+C6 all plates vs NX free-free,LPlate,5,-5.51246233908519,NaN,NaN
+C6 all plates vs NX free-free,LPlate,6,-4.62816051960103,NaN,NaN
+C6 all plates vs NX free-free,Frame,1,-0.193178790301085,NaN,NaN
+C6 all plates vs NX free-free,Frame,2,6.42933383562503,NaN,NaN
+C6 all plates vs NX free-free,Frame,3,-0.118121578795738,NaN,NaN
+C6 all plates vs NX free-free,Frame,4,-1.65694282380398,NaN,NaN
+C6 all plates vs NX free-free,Frame,5,-0.302433786685741,NaN,NaN
+C6 all plates vs NX free-free,Frame,6,-1.35295782621003,NaN,NaN
+C8 coherence P1_Accel,MedianCoherence,1,0.913830735182748,NaN,NaN
+C8 coherence P1_Accel,MedianCoherence,2,0.931178071991035,NaN,NaN
+C8 coherence P1_Accel,MedianCoherence,3,0.998646599921756,NaN,NaN
+C8 coherence P1_Accel,MedianCoherence,4,0.997937137806182,NaN,NaN
+C8 coherence P1_Accel,MedianCoherence,5,0.917477092547668,NaN,NaN
+C8 coherence P1_Accel,MedianCoherence,6,0.939852085091281,NaN,NaN
+C8 coherence P1_Accel,MedianCoherence,7,0.997512781514338,NaN,NaN
+C8 coherence P1_Accel,MedianCoherence,8,0.986252319559941,NaN,NaN
+C8 coherence P1_Accel,MedianCoherence,9,0.990147276032983,NaN,NaN
+C8 coherence P1_Accel,MedianCoherence,10,0.968475602799662,NaN,NaN
+C8 coherence P1_Accel,MedianCoherence,11,0.992001141600263,NaN,NaN
+C8 coherence P1_Accel,MedianCoherence,12,0.99903838679224,NaN,NaN
+C8 coherence P1_Accel,MedianCoherence,13,0.993360302843353,NaN,NaN
+C8 coherence P1_Accel,MedianCoherence,14,0.996806767769192,NaN,NaN
+C8 coherence P1_Accel,MedianCoherence,15,0.978969689507514,NaN,NaN
+C8 coherence P1_Mic,MedianCoherence,1,0.99556071453248,NaN,NaN
+C8 coherence P1_Mic,MedianCoherence,2,0.999307972705366,NaN,NaN
+C8 coherence P1_Mic,MedianCoherence,3,0.997828839896973,NaN,NaN
+C8 coherence P1_Mic,MedianCoherence,4,0.961622736702503,NaN,NaN
+C8 coherence P1_Mic,MedianCoherence,5,0.973432958534372,NaN,NaN
+C8 coherence P1_Mic,MedianCoherence,6,0.925665714705743,NaN,NaN
+C8 coherence P1_Mic,MedianCoherence,7,0.9936759589069,NaN,NaN
+C8 coherence P1_Mic,MedianCoherence,8,0.943654044471423,NaN,NaN
+C8 coherence P1_Mic,MedianCoherence,9,0.93746269901823,NaN,NaN
+C8 coherence P1_Mic,MedianCoherence,10,0.975353121808464,NaN,NaN
+C8 coherence P1_Mic,MedianCoherence,11,0.998055428608717,NaN,NaN
+C8 coherence P1_Mic,MedianCoherence,12,0.928359197237594,NaN,NaN
+C8 coherence P1_Mic,MedianCoherence,13,0.904623776681661,NaN,NaN
+C8 coherence P1_Mic,MedianCoherence,14,0.99406736586864,NaN,NaN
+C8 coherence P1_Mic,MedianCoherence,15,0.968332020339636,NaN,NaN
+C8 coherence P2_Accel,MedianCoherence,1,0.971476092429955,NaN,NaN
+C8 coherence P2_Accel,MedianCoherence,2,0.997339076105172,NaN,NaN
+C8 coherence P2_Accel,MedianCoherence,3,0.91374772043915,NaN,NaN
+C8 coherence P2_Accel,MedianCoherence,4,0.920042726357677,NaN,NaN
+C8 coherence P2_Accel,MedianCoherence,5,0.936073837800227,NaN,NaN
+C8 coherence P2_Accel,MedianCoherence,6,0.992878176965336,NaN,NaN
+C8 coherence P2_Accel,MedianCoherence,7,0.927515628927267,NaN,NaN
+C8 coherence P2_Accel,MedianCoherence,8,0.999329925384145,NaN,NaN
+C8 coherence P2_Accel,MedianCoherence,9,0.997764832338638,NaN,NaN
+C8 coherence P2_Accel,MedianCoherence,10,0.915622784758644,NaN,NaN
+C8 coherence P2_Accel,MedianCoherence,11,0.998224257290322,NaN,NaN
+C8 coherence P2_Accel,MedianCoherence,12,0.922836543700871,NaN,NaN
+C8 coherence P2_Accel,MedianCoherence,13,0.99835451651681,NaN,NaN
+C8 coherence P2_Accel,MedianCoherence,14,0.822931990175053,NaN,NaN
+C8 coherence P2_Accel,MedianCoherence,15,0.996201887122153,NaN,NaN
+C8 coherence P2_Accel,MedianCoherence,16,0.994845188790203,NaN,NaN
+C8 coherence P2_Accel,MedianCoherence,17,0.99178573507266,NaN,NaN
+C8 coherence P2_Accel,MedianCoherence,18,0.918970801490846,NaN,NaN
+C8 coherence P3_Accel,MedianCoherence,1,0.994910053276324,NaN,NaN
+C8 coherence P3_Accel,MedianCoherence,2,0.973849627360168,NaN,NaN
+C8 coherence P3_Accel,MedianCoherence,3,0.963324858396535,NaN,NaN
+C8 coherence P3_Accel,MedianCoherence,4,0.968158415866508,NaN,NaN
+C8 coherence P3_Accel,MedianCoherence,5,0.995905532472373,NaN,NaN
+C8 coherence P3_Accel,MedianCoherence,6,0.991796611380595,NaN,NaN
+C8 coherence P3_Accel,MedianCoherence,7,0.995942970868241,NaN,NaN
+C8 coherence P3_Accel,MedianCoherence,8,0.989020981186314,NaN,NaN

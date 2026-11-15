@@ -1,0 +1,17 @@
+This is a brief presentation/tutorial on how to use Siemens NX to compute moments of inertia of a simple rectangular plate.
+
+File: Presentation for Siemens NX - Moments of Inertia.pdf
+
+These are two MATLAB files with sample data that can be used to compute the period of oscillation for a hanging plate.  The data output format of the Arduino program has been chosen to make it easy to copy and paste directly into a MATLAB script.  The commercial sensor data output is from an X-Modal data conversion script that will be provided in lab.
+
+File: sample_arduino_data.mDownload sample_arduino_data.m
+
+File: sample_commercial_data.matDownload sample_commercial_data.mat
+
+This is a quick MATLAB script to combine two body MOI into one and an NX example.
+
+File: AddInertiaTensor.mDownload AddInertiaTensor.m
+
+ File: NX measure assembly.pdf
+
+See the FAQs: EXP1 (FAQs)

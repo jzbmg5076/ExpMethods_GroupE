@@ -1,0 +1,1 @@
+C:\path\to\ExpMethods_GroupE\Lab Data\EXP3\NX\P2_LPlate_Springs\Experiment3_Model2_fem1_i.prt|0.0|-2.564|-1.25|15.826|7.8|0.25|C:\path\to\ExpMethods_GroupE\Lab Data\EXP3\NX\P2_LPlate_Springs\Experiment3_Model2_fem1.fem|C:\path\to\ExpMethods_GroupE\Lab Data\EXP3\NX\P2_LPlate_Springs\Experiment3_Model2_sim1.sim|CornerSprings_Modal

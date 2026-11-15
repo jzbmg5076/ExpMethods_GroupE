@@ -1,0 +1,73 @@
+
+*** 19:10:01 *** 
+Starting Nastran Exporter
+
+*** 19:10:01 *** 
+Writing file C:\Users\ohiog\College\Fall26\ExperimentalMethods\Lab 
+Data\EXP2\NX\AI_SIM_TAKE_2\brass_sim1-solution_1.dat
+ 
+*** 19:10:01 *** 
+Writing SIMCENTER NASTRAN 2512.0 compatible deck
+
+*** 19:10:01 *** 
+Writing Nastran System section
+
+*** 19:10:01 *** 
+Writing File Management section
+
+*** 19:10:01 *** 
+Writing Executive Control section
+
+*** 19:10:01 *** 
+Writing Case Control section
+
+*** 19:10:02 *** 
+Writing Bulk Data section
+
+*** 19:10:02 *** 
+Writing Nodes
+
+*** 19:10:02 *** 
+Writing Elements
+
+*** 19:10:02 *** 
+Writing Physical Properties
+
+*** 19:10:02 *** 
+Writing Materials
+
+*** 19:10:02 *** 
+Writing Degree-of-Freedom Sets
+
+*** 19:10:02 *** 
+Writing Loads and Constraints
+
+*** 19:10:03 *** 
+Writing Coordinate Systems
+
+*** 19:10:03 *** 
+Validating Solution Setup
+
+*** 19:10:03 *** 
+Summary of Bulk Data cards written
+
++----------+----------+
+|   NAME   |  NUMBER  |
++----------+----------+
+| CHBDYE   | 16746    |
+| CONV     | 16689    |
+| CTETRA   | 47583    |
+| GRID     | 12512    |
+| MAT4     | 2        |
+| NLPARM   | 1        |
+| PARAM    | 5        |
+| PCONV    | 1        |
+| PSOLID   | 1        |
+| QBDY3    | 1        |
+| SPC      | 1        |
+| SPOINT   | 1        |
++----------+----------+
+
+*** 19:10:03 *** 
+Nastran Deck Successfully Written
+

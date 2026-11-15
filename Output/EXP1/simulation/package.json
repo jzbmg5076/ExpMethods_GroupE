@@ -1,0 +1,9 @@
+{
+  "name": "chain-plate-lab",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test --test-isolation=none physics.test.mjs"
+  }
+}

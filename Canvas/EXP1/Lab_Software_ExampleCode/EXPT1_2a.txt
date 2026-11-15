@@ -1,0 +1,98 @@
+// MPU-6050 Short Example Sketch
+//www.elegoo.com
+//2016.12.9
+
+#include<Wire.h>
+const int MPU_addr=0x68;  // I2C address of the MPU-6050
+// int16_t AcX[100],AcY[100],AcZ[100],Tmp[100],GyX[100],GyY[100],GyZ[100];
+int16_t AcX[2050];
+int16_t AcY[2050];
+int16_t AcZ[2050];
+unsigned long start_time;
+unsigned long end_time;
+
+int16_t num_cap = 1;
+
+void setup(){
+  Wire.begin();
+  Wire.beginTransmission(MPU_addr);
+  Wire.write(0x6B);  // PWR_MGMT_1 register
+  Wire.write(0);     // set to zero (wakes up the MPU-6050)
+  Wire.endTransmission(true);
+  Serial.begin(115200);    // 9600
+  delay(1000);
+}
+void loop() {
+  int i;
+
+  if(num_cap) {
+    Serial.println("% Start swing");
+    delay(2000);
+
+    start_time = millis();
+    for (i=0;i<2048;i++) {
+      Wire.beginTransmission(MPU_addr);
+      Wire.write(0x3B);  // starting with register 0x3B (ACCEL_XOUT_H)
+      Wire.endTransmission(false);
+      Wire.requestFrom(MPU_addr,6,true);  // request a total of 14 registers
+      AcX[i]=Wire.read()<<8|Wire.read();  // 0x3B (ACCEL_XOUT_H) & 0x3C (ACCEL_XOUT_L)    
+      AcY[i]=Wire.read()<<8|Wire.read();  // 0x3D (ACCEL_YOUT_H) & 0x3E (ACCEL_YOUT_L)
+      AcZ[i]=Wire.read()<<8|Wire.read();  // 0x3F (ACCEL_ZOUT_H) & 0x40 (ACCEL_ZOUT_L)
+      // Tmp[i]=Wire.read()<<8|Wire.read();  // 0x41 (TEMP_OUT_H) & 0x42 (TEMP_OUT_L) // Tmp=Tmp/340.00+36.53 C
+      // GyX[i]=Wire.read()<<8|Wire.read();  // 0x43 (GYRO_XOUT_H) & 0x44 (GYRO_XOUT_L)
+      // GyY[i]=Wire.read()<<8|Wire.read();  // 0x45 (GYRO_YOUT_H) & 0x46 (GYRO_YOUT_L)
+      // GyZ[i]=Wire.read()<<8|Wire.read();  // 0x47 (GYRO_ZOUT_H) & 0x48 (GYRO_ZOUT_L)
+    }
+    end_time = millis();
+
+    Serial.print("% Capture: ");
+    Serial.print(end_time-start_time);
+    Serial.println(" mS");
+
+    Serial.println("% -=- X, Y, Z -=-");  // "-=- X, Y, Z, T, RX, RY, RZ -=-"
+    Serial.print("X = [");
+    for (i=0; i<2048; i++) {
+      Serial.print(AcX[i]);
+      Serial.print("  ");
+    }
+    Serial.println("]; ");
+    Serial.print("Y = [");
+    for (i=0; i<2048; i++) {
+      Serial.print(AcY[i]);
+      Serial.print("  ");
+    }
+    Serial.println("]; ");
+    Serial.print("Z = [");
+    for (i=0; i<2048; i++) {
+      Serial.print(AcZ[i]);
+      Serial.print("  ");
+    }
+    Serial.println("]; ");
+    // for (i=0; i<100; i++) {
+    //   Serial.print(Tmp[i]);
+    //   Serial.print("  ");
+    // }
+    // Serial.println(" ");
+    // for (i=0; i<100; i++) {
+    //   Serial.print(GyX[i]);
+    //   Serial.print("  ");
+    // }
+    // Serial.println(" ");
+    // for (i=0; i<100; i++) {
+    //   Serial.print(GyY[i]);
+    //   Serial.print("  ");
+    // }
+    // Serial.println(" ");
+    // for (i=0; i<100; i++) {
+    //   Serial.print(GyZ[i]);
+    //   Serial.print("  ");
+    // }
+    Serial.println("% -=-=-=-=-");
+    // Serial.println(" ");
+    // Serial.println("plot ([X' Y' Z'])");
+
+    num_cap--;
+  } else { delay(1000); }
+
+  // delay(5000);
+}

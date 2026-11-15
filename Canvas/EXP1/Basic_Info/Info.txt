@@ -1,0 +1,22 @@
+Basic Material / Equipment
+
+There will be four plates of different shapes with three different materials. Testing equipment includes chain/cables, screws/washers/nuts, clamps, etc.
+
+You are required to test three of the plate shapes, plus one assembly of the tested shapes.
+
+Test equipment includes an Arduino with a hobbyist, six-axis DC mems accelerometer and X-Modal with a commercial single axis IEPE accelerometer.
+
+Basic Objective(s)
+
+For each of the four plate configurations, identify: the 'cg' location, the principal axes (through the 'cg'), and the moments of inertia (Ixx, Iyy, Izz)
+
+For the plate assembly, two shapes must be combined subject to the constraints of different materials and no common 'cg' or axes.
+
+Must report the full results for all four configurations with engineering validation/justification.
+
+This will include (at least one each valid) analytical model estimate, numerical model estimate, experimental compound pendulum estimate, and experimental bifilar pendulum estimate. And (at least one valid) experimentally determined Ixx, Iyy, & Izz.
+
+This must also include (at least one each valid) result taken from the Arduino sensor data and the commercial sensor data.
+
+For the combined assembly, results must be reported for both numerical model estimate and mathematical combination estimate.
+

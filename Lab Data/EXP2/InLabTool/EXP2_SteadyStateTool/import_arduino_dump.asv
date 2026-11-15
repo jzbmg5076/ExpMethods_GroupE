@@ -1,0 +1,175 @@
+function T = import_arduino_dump(source, varargin)
+%IMPORT_ARDUINO_DUMP  Parse an EXP2 Arduino "D" dump into a table, and
+%plot it (on by default).
+%
+%   T = IMPORT_ARDUINO_DUMP(source) parses the raw dump text in SOURCE
+%   and returns a table with columns Sample, Time_s, Ch1, Ch2, Ch3, Ch4
+%   (temperatures in deg C, same order the Arduino prints: T0 T1 T2 T3).
+%   By default this also opens a plot -- see 'Plot' below.
+%
+%   SOURCE can be:
+%     - a path to a .txt file holding the dump (a file you saved from
+%       the Serial Monitor after sending 'D' -- same layout as
+%       Canvas/EXP2/SampleOutput.txt, comment lines starting with %
+%       are fine and get skipped)
+%     - the dump text itself, as a string/char array (paste straight
+%       out of the Serial Monitor)
+%
+%   Optional name-value pairs:
+%     'Interval'    assumed seconds between samples (default 5.06 --
+%                   the code saves every 5000 ms checked on a ~0.5s
+%                   loop, tightened close to true 5s by the 9/26 Canvas
+%                   update). The dump has NO real timestamps, this is
+%                   always an assumption -- override it with your own
+%                   measured interval from the Calibration sheet.
+%     'NChan'       number of channels (default 4, matches EXPT2_1d.txt)
+%     'Plot'        true/false (default TRUE) -- plots all channels vs
+%                   time. Ch1 (=T0, nearest the heater) is always drawn
+%                   in the "hot" color and Ch4 (=T3, farthest) in the
+%                   "cool" color, regardless of which one is actually
+%                   hottest at a given moment, so color always means
+%                   position, not just current temperature. Pass
+%                   'Plot', false to suppress (e.g. loading many files
+%                   in a loop).
+%     'Positions'   1xNChan vector giving each channel's distance from
+%                   the heater (same units you're logging in the Run
+%                   Log sheet), e.g. [0.5 1.25 2 2.75]. If given, ALSO
+%                   draws a second figure: temperature vs position
+%                   along the rod -- the actual T(x) decay curve --
+%                   using the average of the last 'SteadyWindow'
+%                   samples per channel as that channel's steady
+%                   reading, with an error bar showing the spread over
+%                   that window (a quick visual steady-state check).
+%     'SteadyWindow' how many trailing samples to average for the
+%                   position plot (default 15 -- override with your own
+%                   value, e.g. 'SteadyWindow', 5, if you want it to match
+%                   the workbook's Steady-State Check tab instead).
+%
+%   Examples:
+%     T = import_arduino_dump('EX_data_run01.txt');
+%     T = import_arduino_dump('EX_data_run01.txt', 'Positions', [0.5 1.25 2 2.75]);
+%     T = import_arduino_dump(pastedText, 'Interval', 5.2, 'Plot', false);
+%
+%   You can still feed T into the existing steady-state check yourself:
+%     [isSteady, slopes] = check_steady_state(T.Time_s, [T.Ch1 T.Ch2 T.Ch3 T.Ch4], 5, 0.05);
+
+p = inputParser;
+addRequired(p, 'source');
+addParameter(p, 'Interval', 5.06, @isnumeric);
+addParameter(p, 'NChan', 4, @isnumeric);
+addParameter(p, 'Plot', true, @islogical);
+addParameter(p, 'Positions', [], @isnumeric);
+addParameter(p, 'SteadyWindow', 15, @isnumeric);
+parse(p, source, varargin{:});
+interval     = p.Results.Interval;
+nChan        = p.Results.NChan;
+doPlot       = p.Results.Plot;
+positions    = p.Results.Positions;
+steadyWindow = p.Results.SteadyWindow;
+
+% --- get the raw text, whether SOURCE is a file path or literal text ---
+if isfile(source)
+    raw_text = fileread(source);
+else
+    raw_text = char(source);
+end
+
+% --- drop comment lines (the Canvas sample file uses leading %) and blanks ---
+lines = splitlines(string(raw_text));
+lines = lines(~startsWith(strtrim(lines), '%') & strtrim(lines) ~= "");
+
+% --- every number in what's left, in the order it appears ---
+nums = regexp(strjoin(lines, ' '), '-?\d+\.?\d*', 'match');
+vals = str2double(nums);
+
+if isempty(vals)
+    error('import_arduino_dump:noData', ...
+        'No numbers found in the source -- check the file/text you passed in.');
+end
+
+if mod(numel(vals), nChan) ~= 0
+    warning('import_arduino_dump:oddCount', ...
+        ['Found %d numbers, not a multiple of NChan=%d. Dropping the ' ...
+         'trailing partial sample -- double check the source text ' ...
+         'wasn''t cut off mid-dump.'], numel(vals), nChan);
+    vals = vals(1:end - mod(numel(vals), nChan));
+end
+
+% --- reshape into one row per sample, one column per channel ---
+data = reshape(vals, nChan, []).';   % [N x nChan], columns = T0 T1 T2 T3 ...
+N = size(data, 1);
+t = (0:N-1)' * interval;             % no real timestamps in the dump -- assumed spacing
+
+% --- package as a table ---
+T = table((1:N)', t, 'VariableNames', {'Sample', 'Time_s'});
+for c = 1:nChan
+    T.(sprintf('Ch%d', c)) = data(:, c);
+end
+
+fprintf('Loaded %d samples x %d channels (%.1f min @ %.2fs/sample assumed).\n', ...
+    N, nChan, t(end)/60, interval);
+
+if doPlot
+    plot_time_series(T, nChan);
+    if ~isempty(positions)
+        if numel(positions) ~= nChan
+            warning('import_arduino_dump:posMismatch', ...
+                'Positions has %d entries, NChan is %d -- skipping the position plot.', ...
+                numel(positions), nChan);
+        else
+            plot_position_profile(T, nChan, positions, steadyWindow);
+        end
+    end
+end
+
+end
+
+% ------------------------------------------------------------------
+function plot_time_series(T, nChan)
+    if nChan == 4
+        colors = [0.85 0.10 0.10;   % Ch1 = T0, nearest heater -- red
+                  0.90 0.55 0.10;   % orange
+                  0.20 0.55 0.85;   % light blue
+                  0.10 0.10 0.70];  % Ch4 = T3, farthest -- dark blue
+    else
+        colors = jet(nChan);       % fallback for a non-standard channel count
+    end
+
+    figure('Name', 'EXP2 -- temperature vs time');
+    hold on;
+    labels = strings(1, nChan);
+    for c = 1:nChan
+        plot(T.Time_s/60, T.(sprintf('Ch%d', c)), '-o', ...
+            'Color', colors(c,:), 'LineWidth', 1.5, 'MarkerSize', 3);
+        note = '';
+        if c == 1,      note = ' -- nearest heater'; end
+        if c == nChan,  note = ' -- farthest';        end
+        labels(c) = sprintf('Ch%d = T%d%s', c, c-1, note);
+    end
+    hold off;
+    xlabel('Time (min)');
+    ylabel('Temperature (\circC)');
+    legend(labels, 'Location', 'best');
+    title('EXP2 rod temperatures vs time');
+    grid on;
+end
+
+function plot_position_profile(T, nChan, positions, steadyWindow)
+    n = height(T);
+    w = min(steadyWindow, n);
+    Tsteady = nan(1, nChan);
+    Tspread = nan(1, nChan);
+    for c = 1:nChan
+        tail = T.(sprintf('Ch%d', c))(end-w+1:end);
+        Tsteady(c) = mean(tail);
+        Tspread(c) = max(tail) - min(tail);
+    end
+    [posSorted, order] = sort(positions);
+
+    figure('Name', 'EXP2 -- temperature vs position');
+    errorbar(posSorted, Tsteady(order), Tspread(order)/2, '-o', 'LineWidth', 1.5);
+    xlabel('Distance from heater');
+    ylabel('Temperature (\circC)');
+    title(sprintf('T(x) along the rod (last %d samples averaged per channel)', w));
+    grid on;
+end

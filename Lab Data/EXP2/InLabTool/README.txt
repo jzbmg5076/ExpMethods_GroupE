@@ -1,0 +1,1 @@
+This Tool is made by claude. It has been tested in lab. Using the outputs from tests testing copper, aluminum, &  bronze rods. the Arduino script is Located in  (C:\path\to\ExpMethods_GroupE\Canvas\EXP2\ArduinoCode) and the outputs are in  (C:\path\to\ExpMethods_GroupE\Lab Data\EXP2\Runs)

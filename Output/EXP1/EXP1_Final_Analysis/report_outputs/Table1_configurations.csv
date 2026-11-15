@@ -1,0 +1,5 @@
+"Config","Part and material","Mass (lbm)","t (in)","Density from mass (g/cm^3)","Handbook density (g/cm^3)","Role in test plan"
+"1","Rectangle 12.9 x 5.9 in, 6061-T651 aluminum, 12 holes","3.719","0.500","2.716","2.70 (6061)","Symmetric reference; tested with both sensors"
+"2","Notched L plate 15.8 x 7.8 in, HDPE, 16 holes","2.555","0.773","0.939","0.93-0.97 (HDPE)","Asymmetric shape and a second material"
+"3","Frame 23.9 x 12.0 in with offset opening, 6061 aluminum, 16 holes","9.998","0.515","2.666","2.70 (6061)","Large, heavy part with an internal opening"
+"4","Config 2 on Config 1, HDPE rotated 162.7 deg about z","6.274","-","-","-","Mixed-material assembly with no common CG or axis"

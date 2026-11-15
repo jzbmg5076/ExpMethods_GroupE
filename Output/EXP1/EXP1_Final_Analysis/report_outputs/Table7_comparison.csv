@@ -1,0 +1,4 @@
+"Config, axis","MATLAB","NX as modeled","NX scaled to our mass","Pendulum test +/- uncertainty","Test vs MATLAB","Test vs NX (scaled)","NX (scaled) vs MATLAB","Frequency predicted vs measured (Hz)"
+"3, Ixx (compound)","584.8","584.0","555.5","545 +/- 36.2","-6.8%","-1.9%","-5.0%","0.6951 vs 0.6992 (+0.60%)"
+"2, Iyy (compound)","9.977","9.98","9.983","9.13 +/- 4.29","-8.5%","-8.5%","+0.05%","1.1243 vs 1.1277 (+0.30%)"
+"1, Izz (bifilar)","62.19","55.91","62.22","54.0 +/- 2.83","-13.1%","-13.2%","+0.05%","1.6263 vs 1.7449 (+7.3%)"

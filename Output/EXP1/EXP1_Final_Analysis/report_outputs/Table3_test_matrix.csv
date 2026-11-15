@@ -1,0 +1,4 @@
+"Config","Run files","Pendulum and motion","Tested axis (lab) = model axis","Geometry","Sensor(s)","Trials"
+"3","YData1-3","Compound, V-harness from one bolt","Ixx = model Iyy (584.8)","d = 16.75 in","Commercial","3"
+"2","IntoTable1-4","Compound, two chains to top corners","Iyy = model Ixx (9.977)","d = 7.19 in","Commercial","4"
+"1","Bifolar1-3 (.MAT + Arduino.txt)","Bifilar, two vertical chains","Izz = model Izz (62.19)","L = 8.50 in, r = 6.20 in","Commercial + Arduino","3"

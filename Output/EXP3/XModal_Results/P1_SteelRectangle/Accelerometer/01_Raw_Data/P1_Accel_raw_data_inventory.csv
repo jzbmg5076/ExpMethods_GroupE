@@ -1,0 +1,16 @@
+point,file,recorded,x_in,y_in,df_Hz,lines,fmax_Hz,datasets_in_file,units,response_label_raw,reference_label_raw,ordinate,median_coherence_100_2600Hz,min_coherence_100_2600Hz
+1,Rect1x1.MAT,13Oct2026 10:28:45,0.75,0.75,3.90625,801,3125.0,4,"British (lbf,g*s^2,F",CHAN 2 dir0,CHAN 0 dir0,Volts/Volts,0.914,0.513
+2,Rect1x2.mat,13Oct2026 10:51:48,3.6,0.75,3.90625,801,3125.0,5,"British (lbf,g*s^2,F",CHAN 2 dir0,CHAN 1 dir0,Volts/Volts,0.932,0.69
+3,Rect1x3.mat,13Oct2026 10:56:38,6.45,0.75,3.90625,801,3125.0,5,"British (lbf,g*s^2,F",CHAN 2 dir0,CHAN 1 dir0,Volts/Volts,0.999,0.02
+4,Rect1x4.mat,13Oct2026 10:57:38,9.3,0.75,3.90625,801,3125.0,5,"British (lbf,g*s^2,F",CHAN 2 dir0,CHAN 1 dir0,Volts/Volts,0.998,0.631
+5,Rect1x5.mat,13Oct2026 10:59:41,12.15,0.75,3.90625,801,3125.0,5,"British (lbf,g*s^2,F",CHAN 2 dir0,CHAN 1 dir0,Volts/Volts,0.916,0.394
+6,Rect2x1.mat,13Oct2026 11:02:13,0.75,2.9375,3.90625,801,3125.0,5,"British (lbf,g*s^2,F",CHAN 2 dir0,CHAN 1 dir0,Volts/Volts,0.94,0.269
+7,Rect2x2.mat,13Oct2026 11:05:35,3.6,2.9375,3.90625,801,3125.0,5,"British (lbf,g*s^2,F",CHAN 2 dir0,CHAN 1 dir0,Volts/Volts,0.998,0.312
+8,Rect2x3.mat,13Oct2026 11:08:08,6.45,2.9375,3.90625,801,3125.0,5,"British (lbf,g*s^2,F",CHAN 2 dir0,CHAN 1 dir0,Volts/Volts,0.987,0.239
+9,Rect2x4.mat,13Oct2026 11:12:11,9.3,2.9375,3.90625,801,3125.0,5,"British (lbf,g*s^2,F",CHAN 2 dir0,CHAN 1 dir0,Volts/Volts,0.99,0.016
+10,Rect2x5.mat,13Oct2026 11:13:48,12.15,2.9375,3.90625,801,3125.0,5,"British (lbf,g*s^2,F",CHAN 2 dir0,CHAN 1 dir0,Volts/Volts,0.971,0.265
+11,Rect3x1.mat,13Oct2026 11:16:04,0.75,5.125,3.90625,801,3125.0,5,"British (lbf,g*s^2,F",CHAN 2 dir0,CHAN 1 dir0,Volts/Volts,0.992,0.245
+12,Rect3x2.mat,13Oct2026 11:16:58,3.6,5.125,3.90625,801,3125.0,5,"British (lbf,g*s^2,F",CHAN 2 dir0,CHAN 1 dir0,Volts/Volts,0.999,0.642
+13,Rect3x3.mat,13Oct2026 11:19:57,6.45,5.125,3.90625,801,3125.0,5,"British (lbf,g*s^2,F",CHAN 2 dir0,CHAN 1 dir0,Volts/Volts,0.992,0.03
+14,Rect3x4.mat,13Oct2026 11:20:40,9.3,5.125,3.90625,801,3125.0,5,"British (lbf,g*s^2,F",CHAN 2 dir0,CHAN 1 dir0,Volts/Volts,0.997,0.413
+15,Rect3x5.mat,13Oct2026 11:21:25,12.15,5.125,3.90625,801,3125.0,4,"British (lbf,g*s^2,F",CHAN 2 dir0,CHAN 1 dir0,Volts/Volts,0.979,0.036

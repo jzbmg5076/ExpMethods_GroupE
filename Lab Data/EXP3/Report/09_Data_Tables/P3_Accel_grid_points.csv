@@ -1,0 +1,9 @@
+node,x_in,y_in,z_in,raw_file
+1,0.9,0.9,0,Acc1x1.mat
+2,13.0,0.9,0,Acc2.mat
+3,22.95,0.9,0,Acc3.mat
+4,0.9,6.0,0,Acc4.mat
+5,22.95,6.0,0,Acc5.mat
+6,0.9,11.1,0,Acc6.mat
+7,13.0,11.1,0,Acc7.mat
+8,22.95,11.1,0,Acc8.mat

@@ -1,0 +1,16 @@
+node,x_in,y_in,z_in,raw_file
+1,0.75,0.75,0,Rect1x1.MAT
+2,3.6,0.75,0,Rect1x2.mat
+3,6.45,0.75,0,Rect1x3.mat
+4,9.3,0.75,0,Rect1x4.mat
+5,12.15,0.75,0,Rect1x5.mat
+6,0.75,2.9375,0,Rect2x1.mat
+7,3.6,2.9375,0,Rect2x2.mat
+8,6.45,2.9375,0,Rect2x3.mat
+9,9.3,2.9375,0,Rect2x4.mat
+10,12.15,2.9375,0,Rect2x5.mat
+11,0.75,5.125,0,Rect3x1.mat
+12,3.6,5.125,0,Rect3x2.mat
+13,6.45,5.125,0,Rect3x3.mat
+14,9.3,5.125,0,Rect3x4.mat
+15,12.15,5.125,0,Rect3x5.mat

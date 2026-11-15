@@ -1,0 +1,13 @@
+label,xmodal_node,x_from_left_end_in,y_from_near_long_edge_in,in_partials_T5_T6,NX_phi_m1_150Hz,NX_phi_m2_159Hz,NX_phi_m3_347Hz,NX_phi_m4_428Hz,NX_phi_m5_559Hz,NX_phi_m6_707Hz,where
+pt1,1,0.9,0.9,Y,0.812,0.644,0.624,0.378,-0.022,0.692,bottom-left corner
+pt2,2,13.0,0.9,Y,-0.713,-0.028,-0.404,0.375,0.415,0.079,bottom middle
+pt3,3,22.95,0.9,Y,0.694,-0.777,0.753,-0.377,0.51,-0.432,bottom-right corner
+pt4,4,22.95,11.1,Y,0.746,0.838,-0.671,-0.212,0.643,0.354,top-right corner
+pt5,5,13.0,11.1,Y,-0.925,0.168,0.94,0.247,-0.154,-0.084,top middle
+pt6,6,0.9,11.1,Y,0.607,-0.74,-0.493,0.658,0.499,-0.246,top-left corner
+A accelerometer,7,23.1,2.1,,0.747,-0.629,0.572,-0.537,0.186,-0.358,"beeswax, +Z; mount before T6 and leave on"
+M microphone,8,8.5,2.25,,,,,,,,1 in above the top surface
+S1 support ball,,5.0,4.75,,,,,,,,ball contact point under the plate
+S2 support ball,,4.25,8.0,,,,,,,,ball contact point under the plate
+S3 support ball,,18.5,3.25,,,,,,,,ball contact point under the plate
+S4 support ball,,21.75,5.75,,,,,,,,ball contact point under the plate

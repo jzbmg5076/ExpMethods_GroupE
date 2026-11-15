@@ -1,0 +1,73 @@
+
+*** 19:34:11 *** 
+Starting Nastran Exporter
+
+*** 19:34:11 *** 
+Writing file C:\Users\ohiog\College\Fall26\ExperimentalMethods\Lab 
+Data\EXP2\NX\AI_SIM_TAKE_2\copper_hollow_sim1-solution_1.dat
+ 
+*** 19:34:11 *** 
+Writing SIMCENTER NASTRAN 2512.0 compatible deck
+
+*** 19:34:11 *** 
+Writing Nastran System section
+
+*** 19:34:11 *** 
+Writing File Management section
+
+*** 19:34:11 *** 
+Writing Executive Control section
+
+*** 19:34:11 *** 
+Writing Case Control section
+
+*** 19:34:11 *** 
+Writing Bulk Data section
+
+*** 19:34:11 *** 
+Writing Nodes
+
+*** 19:34:11 *** 
+Writing Elements
+
+*** 19:34:12 *** 
+Writing Physical Properties
+
+*** 19:34:12 *** 
+Writing Materials
+
+*** 19:34:12 *** 
+Writing Degree-of-Freedom Sets
+
+*** 19:34:12 *** 
+Writing Loads and Constraints
+
+*** 19:34:13 *** 
+Writing Coordinate Systems
+
+*** 19:34:13 *** 
+Validating Solution Setup
+
+*** 19:34:13 *** 
+Summary of Bulk Data cards written
+
++----------+----------+
+|   NAME   |  NUMBER  |
++----------+----------+
+| CHBDYE   | 26766    |
+| CONV     | 26682    |
+| CTETRA   | 71543    |
+| GRID     | 23672    |
+| MAT4     | 2        |
+| NLPARM   | 1        |
+| PARAM    | 5        |
+| PCONV    | 1        |
+| PSOLID   | 1        |
+| QBDY3    | 1        |
+| SPC      | 1        |
+| SPOINT   | 1        |
++----------+----------+
+
+*** 19:34:13 *** 
+Nastran Deck Successfully Written
+

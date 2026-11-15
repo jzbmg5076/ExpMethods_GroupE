@@ -1,0 +1,8 @@
+mode,shape,xmodal_f_Hz,xmodal_zeta_pct,picked_by,python_f_Hz,python_zeta_pct,python_MPC,diff_xmodal_minus_python_Hz,NX_freefree_Hz,delta_vs_freefree_pct,NX_springs_Hz,delta_vs_springs_pct,MAC_vs_NX,coherence_at_mode_min,coherence_at_mode_median
+1,"(3,1) 1st bending",453.43,1.52,hand,454.47,1.5,0.998,-1.04,451.6,0.4,457.9,-1.0,0.982,0.88,0.98
+2,"(2,2) 1st twist",595.42,1.21,hand,594.88,1.28,0.999,0.54,597.4,-0.3,606.0,-1.7,0.988,0.32,0.96
+3,"(4,1) 2nd bending",1250.76,0.47,Wizard,1247.99,0.66,0.999,2.77,1245.5,0.4,1247.3,0.3,0.983,0.79,0.97
+4,"(3,2) bend+twist",1287.6,0.71,Wizard,1286.94,0.82,0.997,0.66,1295.1,-0.6,1300.0,-1.0,0.985,0.32,0.97
+5,"(1,3) cross bending",2136.25,0.26,hand,2136.81,0.49,0.921,-0.56,2158.7,-1.0,2159.4,-1.1,0.917,0.7,0.98
+6,"(4,2)",2187.5,0.44,Wizard,2188.06,0.52,0.998,-0.56,2198.2,-0.5,2201.4,-0.6,0.99,0.82,0.97
+7,? above NX solve,2465.92,0.4,Wizard,2459.36,0.64,0.756,6.56,,,,,,0.91,0.98

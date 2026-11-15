@@ -1,0 +1,19 @@
+EXP1 SAMPLE CALCULATIONS (lbm, in, s; g = 386.09 in/s^2)
+
+1) Compound pendulum, Config 3 (Ixx):
+   gT^2/(4pi^2) = 386.09(1.4302)^2/39.478 = 20.003 in
+   I = m*d*(gT^2/4pi^2 - d) = 9.998(16.75)(20.003 - 16.75) = 544.8 lbm*in^2
+   Uncertainty: length 33.7, period 13.1 -> sqrt(33.7^2 + 13.1^2) = +/-36.2 (6.6%)
+
+2) Bifilar pendulum, Config 1 (Izz), paired frequency 1.7449 Hz:
+   I = m*g*r^2*T^2/(4pi^2*L) = 3.7192(386.09)(6.20)^2(0.5731)^2/(39.478 x 8.50) = 54.03 lbm*in^2
+   Uncertainty +/-2.83 (5.2%). Commercial only 54.35, Arduino only 53.71.
+   Setup that would explain the whole difference: r = 6.65 in (not 6.20) or L = 7.38 in (not 8.50)
+
+3) Hand check, Config 1 without holes: Izz = m(a^2+b^2)/12 = 3.7192(12.90^2+5.90^2)/12 = 62.36 (MATLAB with holes 62.19)
+
+4) Percent difference, Config 3: (544.8 - 584.8)/584.8 x 100% = -6.8%
+
+5) Predicted frequency, Config 3: f = (1/2pi)sqrt[m g d/(I + m d^2)] = 0.6951 Hz (measured 0.6992 Hz)
+
+6) Units: 1 kg*m^2 = 2.2046 lbm x (39.370 in)^2 = 3417.2 lbm*in^2

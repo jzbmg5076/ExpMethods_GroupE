@@ -1,0 +1,15 @@
+Lab Software (example code)
+
+This is the Arduino code for reading the mems accelerometer. (To actually use, the extension must be changed to '.ino')
+
+File: EXPT1_2a.txtDownload EXPT1_2a.txt
+
+These MATLAB files facilitate manipulating the data.
+
+File: example_filter.mDownload example_filter.m
+
+File: readXModalData.mDownload readXModalData.m
+
+Here is an example of the data as saved from X-Modal.
+
+ File: sample_xmodal_data.mat
